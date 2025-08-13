@@ -1,1 +1,188 @@
+:root {
+    --baby-pink: #f0e6e6;
+    --light-gray: #e8e8e8;
+    --white: #ffffff;
+    --dark-text: #333333;
+    --approved-text: #888888;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-gray);
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 3rem 1rem;
+    background-color: var(--baby-pink);
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.header p {
+    font-size: 1.2rem;
+    color: var(--dark-text);
+    margin-top: 0.5rem;
+}
+
+/* Contenedor principal de la malla */
+.curriculum-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/* Columna de semestre */
+.semester {
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    width: 100%;
+    max-width: 300px;
+}
+
+.semester h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--baby-pink);
+}
+
+/* Listado de asignaturas */
+.subject-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.subject-item {
+    background-color: var(--light-gray);
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.subject-item:hover {
+    background-color: var(--baby-pink);
+    transform: translateY(-3px);
+}
+
+/* Estados de los ramos */
+.subject-item.approved {
+    background-color: var(--baby-pink);
+    border-color: #d1b3b3;
+    text-decoration: line-through;
+    color: var(--approved-text);
+    cursor: default;
+}
+
+.subject-item.approved:hover {
+    transform: none;
+    background-color: var(--baby-pink);
+}
+
+.subject-item.blocked {
+    background-color: #fcebeb;
+    border-color: #e5b3b3;
+    cursor: not-allowed;
+    position: relative;
+    color: #a33b3b;
+}
+
+.subject-item.blocked:hover {
+    transform: translateY(-3px);
+}
+
+.subject-item.blocked::after {
+    content: '🔒';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 8px 25px var(--shadow-color);
+    position: relative;
+    text-align: center;
+}
+
+.close-button {
+    color: var(--dark-text);
+    float: right;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #aaa;
+    text-decoration: none;
+}
+
+.modal-content h2 {
+    color: #a33b3b;
+    margin-bottom: 1rem;
+}
+
+#requisites-list {
+    list-style-position: inside;
+    list-style-type: none;
+    padding-left: 0;
+    text-align: left;
+    display: inline-block;
+}
+
+#requisites-list li {
+    background-color: var(--light-gray);
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .curriculum-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
